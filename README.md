@@ -1,6 +1,6 @@
 ![cover](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/cover.jpeg)
 
-# SyriaTel Customer Churn Classification
+# Recommendation System
 
 **Author**: [Heath Rittler](mailto:hrittler@gmail.com)
 
@@ -26,26 +26,7 @@ Within this dataset, 85% of the customers were retained, leading to approximatel
 This project uses the SyriaTel Kaggle dataset, which can be found in `data.csv` in the data folder in this repository. The dataset includes 3,333 entries, and 21 columns.  Here are the columns in the dataset including our target variable, churn:
 
 * `state`- The state in which the account owner resides.
-* `account length` - 
-* `area code` - Primary 3 digit area of the line for the account.
-* `phone number` - Primary 7 digit area of the line for the account.
-* `international plan` - Indicator denoting whether or not the account has an international feature.
-* `voice mail plan` - Indicator denoting whether or not the account has an voice mail feature.
-* `number vmail messages` - Usage metric counting the total number of voicemails for the phone number in question.
-* `total day minutes` - Usage metric indicating how many minutes (call time) were used between 6:00am and 5:00pm.
-* `total day calls` - Usage metric indicating how many calls were used between 6:00am and 5:00pm. 
-* `total day charge` - Usage metric indicating how much the user was charged for their usage between 6:00am and 5:00pm.
-* `total eve minutes` - Usage metric indicating how many minutes (call time) were used between 5:01pm and 8:00pm.
-* `total eve calls` - Usage metric indicating how many calls were used between 5:01pm and 8:00pm. 
-* `total eve charge` - Usage metric indicating how much the user was charged for their usage between 5:01pm and 8:00pm.
-* `total night minutes` - Usage metric indicating how many minutes (call time) were used between 8:01pm and 5:59am.
-* `total night calls` - Usage metric indicating how many calls were used between 8:01pm and 5:59am.
-* `total night charge` - Usage metric indicating how much the user was charged for their usage between 8:01pm and 5:59a.
-* `total intl minutes` - Usage metric indicating how many minutes (call time) were used internationally.
-* `total intl calls` - Usage metric indicating how many calls were made internationally.
-* `total intl charge` - Usage metric indicating how much the user was charged for their international call usage.
-* `customer service calls` - The total number of customer service calls made by the user to the Skyvia Customer Service line.
-* `churn` - Our target category indicating whether or not the customer churned/ cancelled their plan.
+
 
 Additional information about the dataset can be found here: https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset
 
@@ -88,25 +69,25 @@ As the product is used, charges are increasing.  What we really want to investig
 
 In conclusion, we were able to create a model that will accurate predict customers that are at risk of churn.  By leveraging that model, and some of the strategies listed below, SyriaTel will be able to mitigate their churn, and increase the Lifetime Value of their customers.  In summary those strategies are:
 
-- **Customers that have the international plan and the voice mail plan should be surveyed to understand product performance and value.  Although the voice mail plan performances better when paired with the international plan, it should be noted still that no international plan, and no voice mail plan performs the worst of the possible feature combinations (with those products).** 
+- **** 
 
-- **Once a customer reaches 3 customer service calls, flag the account as at risk.  Once the account reaches 4 calls, the probability of canceling goes from 10% to 45%.**
+- ****
 
-- **Scale pricing to offer some relief for customers that use the plan more often.  The pricing scale doesn't incentivize more usage of the product.  Another option would be to look at unlimited usage based pricing, to give customers that use the plan more, the relief knowing that if they use the plan more, they won't necessarily be charged more for that usage.** 
+- **** 
 
 
 ## Moving Forward
 
 Further analyses in these areas could yield additional insights:
 
-- **Look at additional features such as location, or splitting out usage between low, moderate, and high usage**
-- **Include other sources of information such as Salesforce to look at additional account attributes to help with prediction, and strategies to mitigate risk.**
-- **Refresh the analysis regularly with new data to understand how the market is evolving over time.**
+- ****
+- ****
+- ****
 
 
 ## For More Information
 
-The full analysis is located in the [Jupyter Notebook](./phase_3_notebook.ipynb) or review this summary [presentation](./phase_3_presentation.pdf).
+The full analysis is located in the [Jupyter Notebook](./phase_4_notebook.ipynb) or review this summary [presentation](./phase_4_presentation.pdf).
 
 For additional info, contact Heath Rittler at [hrittler@gmail.com](mailto:hrittler@gmail.com)
 
@@ -117,9 +98,9 @@ For additional info, contact Heath Rittler at [hrittler@gmail.com](mailto:hrittl
 ├── data
 ├── images
 ├── README.md
-├── phase_3_presentation.pdf
-├── phase_3_notebook.pdf
-└── phase_3_notebook.ipynb
+├── phase_4_presentation.pdf
+├── phase_4_notebook.pdf
+└── phase_4_notebook.ipynb
 ```
 
 
