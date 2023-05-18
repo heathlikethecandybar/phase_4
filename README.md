@@ -1,4 +1,4 @@
-![cover](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/cover.jpeg)
+![cover](https://github.com/heathlikethecandybar/phase_4_project/blob/main/phase_4/project/images/word_cloud.png)
 
 # Recommendation System
 
@@ -7,82 +7,80 @@
 
 ## Overview
 
-https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset
-
-SyriaTel, a telecommunications company wants to identify the leading factors of why a customer cancels their service.  This is also referred to as 'Churn.'  If they understand the factors that lead to churn, the company can implement programs to reduce the risk of churn, and increase the lifetime value of and for their customers.
-
-My goal is to build a classifer to predict whether a customer will stop doing business with SyriaTel.  I will be using information such as usage, interactions with SyriaTel, and certain features that the customer has purchased.  I am mostly focused on reducing the rate of false negatives so the metric in which I will be evaluating my models is called Recall.  With that being said, we will also keep a close eye on the F1 score, which looks at the harmonic mean between Recall and Precision.  We will keep a close eye here because even though we aren't as concerned about false positives, we want to limit false positives as much as we can, without sacrificing our Recall.
+You are working for an online streaming platform that offers a vast collection of movies to its subscribers. The platform wants to improve the movie recommendation system to enhance user engagement, increase user satisfaction, and ultimately drive more subscriptions. Currently, the platform provides basic recommendations based on popular movies, but they want to implement a more personalized recommendation system.
 
 
 ## Business Problem
 
-Acquring a new customer on average costs 3x that of retaining an existing customer.  At Skyvia, they are trying to optimize their retetention strategies, and do to so they are trying to understand what features of different customers indicate churn.  The presentation will be made availble for the VP of Customer Success, and the Chief Revenue Officer.
-
-Within this dataset, 85% of the customers were retained, leading to approximately 15% churn.  This is pretty high compared to other industry standards for tech based companies, typically expericing churn within the 3-8% range.
+Develop a recommendation system that combines collaborative filtering techniques with content-based approaches. Utilize user-item rating data to identify similar users and recommend movies that have been positively rated by similar users. Additionally, leverage movie metadata such as genre, director, actors, and plot summary to provide content-based recommendations that match user preferences.
 
 
 ## Data
 
-This project uses the SyriaTel Kaggle dataset, which can be found in `data.csv` in the data folder in this repository. The dataset includes 3,333 entries, and 21 columns.  Here are the columns in the dataset including our target variable, churn:
+This dataset (ml-latest-small) describes 5-star rating and free-text tagging activity from MovieLens, a movie recommendation service. It contains 100836 ratings and 3683 tag applications across 9742 movies. These data were created by 610 users between March 29, 1996 and September 24, 2018. This dataset was generated on September 26, 2018.
 
-* `state`- The state in which the account owner resides.
+Users were selected at random for inclusion. No demographic information is included. Each user is represented by an id, and no other information is provided.
 
+The data are contained in the files 
+* `links.csv`
+* `movies.csv` 
+* `ratings.csv` 
+* `tags.csv`
 
-Additional information about the dataset can be found here: https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset
+For our project we will be using primarily the ratings and movies data files:
 
-Additional information about this dataset can be found on the [Kaggle Dataset](https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset) website. 
+**ratings.csv**
+
+* `userId`
+* `movieId`
+* `rating`
+* `timestamp`
+
+Ratings are made on a 5-star scale, with half-star increments (0.0 stars - 5.0 stars).  Timestamps represent seconds since midnight Coordinated Universal Time (UTC) of January 1, 1970.
+
+Ratings visual
+
+**movies.csv**
+
+* `movieId`
+* `title`
+* `genres`
+
+genres visual
+
+Additional information about this dataset can be found on the [MovieLens](https://grouplens.org/datasets/movielens/) website. 
 
 
 ## Methods
 
-After our exploratory analysis, we looked at different classfication models to see if we could accurately predict churn within our data.  We trained our model on 80% of the dataset, while saving the remaining 20% to test our assumptions in what our algorithms learned.  We leveraged a Logistic Regression model, and tuned the regression's hyperparameters to arrive at our baseline model.  
+After our exploratory analysis, we looked at different collaborative based models to see if we could accurately predict/ recommend new movie titles within our data.  We trained our model on 80% of the dataset, while saving the remaining 20% to test our assumptions in what our algorithms learned.  We leveraged a SVD model as our baseline, and then iterated and tuned our SVD model to optimize performance.
 
-That model was then iterated on, leveraging multiple models such as Decision Tree, Random Forest, Ridge, and XGBoost to evaluate the best model.  Each approach was modeled with and without tuned hyperparameters.  We chose our XGBoost model, which performed the best from a Recall perspective, and from an F1 perspective.  We did consider the second meric for evaluation so we didn't include too many false positives in our predictions.
+That model was then iterated on, leveraging multiple models such as kNN, and NMF to evaluate the best model.  Each approach was modeled with and without tuned hyperparameters.  We chose our tuned SVD model, as it performed the best across our metrics of interest, RMSE, MAE, and Cross Validation.
 
-For our final model, we were able to predict positive churn cases 82% of the time.
+For our final model, we were able to reduce our RMSE to 0.81.  For example, our predictions are off roughly 0.83 on a scale of 0-5.
 
-![final_confusion](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/final_confusion.png)
-
-The top 3 features that lead to churn are customers that have the international plan, folks that engage with customer service frequently, and those with the voice mail plan.  Those that are engaging with customer service already, most likely have some other questions or concern about the value that the features/ service are providing.  These would be good indicators of risk, and information to understand what issues customers are experiencing.  
-
-Having customer service calls on this list, actually will make it easier to identify risk within the customer base.  Thus making the outbound efforts to engage with customers with the international plan and the voice mail plan that aren't engaging frequently with customer service.
-
-![feature_importance](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/feature_importance.png)
+![final_results](https://github.com/heathlikethecandybar/phase_4_project/blob/main/phase_4/project/images/final_results.png)
 
 
 ## Results
 
-Customers that had the internation plan feature on their plan churned at a higher rate than those without the international plan feature.  Customers that have the international plan feature churn at a rate near 40% vs those without the feature at 11%.  Understanding why this feature is causing so much dissatisfaction will be an important task for the company to understand. 
+Our tuned SVD model has the lowest RMSE and MAE, indicating that it performs the best in terms of accuracy among the evaluated models.  When evaluating our 5-fold cross validated results, our tuned SVD model again has the lowest CV, indicating consistent and good performance across different iterations.  The RMSE measures the average difference between the predicted ratings and the actual ratings in the test set.  With a rating scale of 0 to 5, an RMSE of 0.80 indicates that, on average, the predicted ratings are off by approximately 0.80 units from the actual ratings. This suggests that the recommendation system is making reasonably accurate predictions.  
 
-![international_plan_churn](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/international_plan_churn.png)
+With that being said, and in addition to our scores, and comparisons, it is also important to get feedback from the users to indicate whether or not the predictions are providing value.
 
-The second most important feature in our data set was customers that were contacting customer service multiple times.  This could be service related, or it could be related to general questions, however once a customer reaches 4 customer service calls, the churn rate goes up significantly.  Churn rate jumps close to 45% once a customer reaches 4 customer service calls.
-
-![churn_cs_calls](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/churn_cs_calls.png)
-
-As the product is used, charges are increasing.  What we really want to investigate though is if the price per minute is going down, as the the total minutes go up.  If there was a strategic pricing, I think we would want to see the price per minute go down, but the charges stay flat because of the increase in minutes used.  I think we would actually want to see a negative slope here indicating that the customers that use the product the most, would be getting a slight discount on pricing as usage increases.  Looking at different pricing mechanisms and strategies may also help with customer sentiment and experience, impacting overall churn.
-
-![price_per_minute](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/price_per_minute.png)
-
+![final_results](https://github.com/heathlikethecandybar/phase_4_project/blob/main/phase_4/project/images/sample_user_preds.png)
 
 ## Conclusions & Recommendations
 
-In conclusion, we were able to create a model that will accurate predict customers that are at risk of churn.  By leveraging that model, and some of the strategies listed below, SyriaTel will be able to mitigate their churn, and increase the Lifetime Value of their customers.  In summary those strategies are:
+In conclusion, we were able to create a recommendation model that will accurately recommend movie titles to an end user.  By leveraging this model, the online streaming company will have an engagement tool they can use, and measure to gain additional users, and build loyalty within their existing user base. Moving forward, integrating and testing the recommendation algorithm will be key and are summarized below.
 
-- **** 
+- **A/B testing between users without the recommendations, and users with the recommendations to measure engagement.**
 
-- ****
+- **Continue to evaluate content recommendation model to improve hybrid approach (tags/ descriptions)**
 
-- **** 
+- **Work with software dev/engineering to implement initial rating capture for new users**
 
-
-## Moving Forward
-
-Further analyses in these areas could yield additional insights:
-
-- ****
-- ****
-- ****
+- **Consider larger datasets and better compute resources**
 
 
 ## For More Information
@@ -102,6 +100,3 @@ For additional info, contact Heath Rittler at [hrittler@gmail.com](mailto:hrittl
 ├── phase_4_notebook.pdf
 └── phase_4_notebook.ipynb
 ```
-
-
-cover photo credit:  OpenAI labs - Dall-E created on 12/31/2022
