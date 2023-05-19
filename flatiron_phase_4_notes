@@ -1,0 +1,47 @@
+3*-- Differences in content and collaborative systems
+
+Content-based Filtering:
+
+Content-based filtering recommends items to users based on the similarity between the items' content and the user's preferences. It considers the characteristics or features of items and tries to match those with the user's preferences. The key steps involved in content-based filtering are:
+
+Item Representation: Items are represented using relevant features or attributes. For example, in a movie recommendation system, the features could include genres, actors, directors, or plot keywords.
+
+User Profile Creation: The system creates a user profile based on the user's previous interactions or explicit preferences. The user profile captures the user's preferences for certain features.
+
+Similarity Calculation: The system computes the similarity between items and the user profile using techniques such as cosine similarity or Euclidean distance. The higher the similarity, the more likely the item is to be recommended.
+
+Recommendation Generation: The system recommends items that are similar to the ones the user has liked or interacted with before.
+
+
+Collaborative Filtering:
+
+Collaborative filtering recommends items to users based on the preferences or behavior of similar users. It assumes that users who have similar preferences in the past will have similar preferences in the future. Collaborative filtering can be further divided into two main types:
+
+User-Based Collaborative Filtering: It identifies users with similar preferences to the target user and recommends items that those similar users have liked or rated highly.
+
+Item-Based Collaborative Filtering: It identifies items that are similar to the ones the user has liked or interacted with and recommends those similar items to the user.
+Collaborative filtering does not rely on explicit item attributes but rather on the collective behavior or patterns in the user-item interaction data. It uses techniques such as nearest neighbor methods (e.g., kNN) or matrix factorization (e.g., SVD) to identify similar users or items and make recommendations based on their preferences.
+
+Both content-based and collaborative filtering have their advantages and limitations. Content-based filtering can provide personalized recommendations based on item features, while collaborative filtering can capture complex user preferences and offer serendipitous recommendations. Hybrid approaches that combine both content-based and collaborative filtering techniques are often used to leverage the strengths of both methods and provide more accurate and diverse recommendations.
+
+
+*-- Notes on why I picked these models
+SVD, kNN, and NMF are popular algorithms used in recommender systems:
+
+1. SVD (Singular Value Decomposition): SVD is a matrix factorization technique used for collaborative filtering in recommender systems. It decomposes the user-item rating matrix into lower-dimensional representations and captures latent factors that influence user preferences. SVD-based methods, such as SVD++, aim to predict user ratings by factorizing the matrix and estimating missing values.
+
+2. kNN (k-Nearest Neighbors): kNN is a memory-based collaborative filtering algorithm that predicts a user's preference based on the preferences of similar users or items. It identifies the k nearest neighbors to a target user (user-based) or a target item (item-based) and calculates predictions based on their ratings or similarities.
+
+3. NMF (Non-Negative Matrix Factorization): NMF is another matrix factorization technique used in recommender systems. It decomposes the user-item rating matrix into non-negative factors, which allows for interpretable representations. NMF-based methods aim to capture underlying patterns in the data and predict user ratings based on the factorized matrix.
+
+These algorithms are commonly used in recommendation systems to provide personalized recommendations based on user preferences and item characteristics. Each algorithm has its own strengths and limitations, and their performance may vary depending on the dataset and specific application.
+
+*-- Metrics of interest
+RMSE (Root Mean Squared Error):
+RMSE is a metric that measures the average magnitude of the differences between predicted and actual ratings or scores. It calculates the square root of the average of the squared differences between predicted and actual values. RMSE gives higher weight to larger errors and is useful for understanding the overall magnitude of prediction errors. A lower RMSE indicates better prediction accuracy, with a value of 0 indicating perfect predictions.
+
+MAE (Mean Absolute Error):
+MAE is another metric that measures the average magnitude of the differences between predicted and actual ratings or scores. Unlike RMSE, MAE calculates the average of the absolute differences between predicted and actual values. MAE provides a measure of the average prediction error and is less sensitive to extreme values compared to RMSE. Like RMSE, a lower MAE indicates better prediction accuracy, with a value of 0 indicating perfect predictions.
+
+CV (Cross-Validation):
+CV is a technique used to estimate the performance or generalization ability of a recommender system. It involves splitting the available data into multiple subsets or folds. The recommender system is trained and evaluated multiple times, each time using a different subset as the test set and the remaining subsets as the training set. CV helps to assess how well the recommender system performs on unseen data and can be used to tune hyperparameters or compare different algorithms. Common types of CV include k-fold cross-validation and leave-one-out cross-validation.

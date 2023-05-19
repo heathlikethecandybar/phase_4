@@ -59,8 +59,7 @@ That model was then iterated on, leveraging multiple models such as kNN, and NMF
 
 For our final model, we were able to reduce our RMSE to 0.81.  For example, our predictions are off roughly 0.83 on a scale of 0-5.
 
-![final_results](https://github.com/heathlikethecandybar/phase_4/blob/main/images/final_results.png)
-
+![final_results](https://github.com/heathlikethecandybar/phase_4/blob/main/images/scores_viz.png)
 
 ## Results
 
@@ -68,7 +67,14 @@ Our tuned SVD model has the lowest RMSE and MAE, indicating that it performs the
 
 With that being said, and in addition to our scores, and comparisons, it is also important to get feedback from the users to indicate whether or not the predictions are providing value.
 
-![final_results](https://github.com/heathlikethecandybar/phase_4/blob/main/images/sample_user_preds.png)
+Here are some rating prediction comparisons for a single user leveraging our content based system.
+
+![final_results_content](https://github.com/heathlikethecandybar/phase_4/blob/main/images/content_recommendations.png)
+
+
+Here are some rating prediction comparisons for a single user leveraging our collaborative based system.
+
+![final_results_collab](https://github.com/heathlikethecandybar/phase_4/blob/main/images/sample_user_preds.png)
 
 ## Conclusions & Recommendations
 
