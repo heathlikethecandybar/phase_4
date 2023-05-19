@@ -59,6 +59,8 @@ That model was then iterated on, leveraging multiple models such as kNN, and NMF
 
 For our final model, we were able to reduce our RMSE to 0.81.  For example, our predictions are off roughly 0.83 on a scale of 0-5.
 
+Model 2 below is our tuned SVD model!
+
 ![final_results](https://github.com/heathlikethecandybar/phase_4/blob/main/images/scores_viz.png)
 
 ## Results
